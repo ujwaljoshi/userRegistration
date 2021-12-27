@@ -1,28 +1,41 @@
 package com.codingTest.userRegistration.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
+
+/**
+ * User is a simple POJO class contains variables and their getters and setters
+ *  @author Revanth Yelluri
+ */
 
 @Entity
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private String username;
     private String password;
-    private LocalDate dateOfBirth;
-    @Id
-    private Integer ssn;
+    private String dateOfBirth;
+    private String ssn;
 
     public User(){
 
     }
 
-    public User(String username, String password, LocalDate dateOfBirth, int ssn){
+    public User(Integer id, String username, String password, String dateOfBirth, String ssn){
+        this.id = id;
         this.username = username;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
         this.ssn = ssn;
     }
+
+    public Integer getId() { return id; }
+
+    public void setId(Integer id) { this.id = id; }
 
     public String getUsername(){
         return username;
@@ -40,19 +53,19 @@ public class User {
         this.password = password;
     }
 
-    public LocalDate getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth){
+    public void setDateOfBirth(String dateOfBirth){
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Integer getSsn(){
+    public String getSsn(){
         return ssn;
     }
 
-    public void setSsn(Integer ssn){
+    public void setSsn(String ssn){
         this.ssn = ssn;
     }
 }
